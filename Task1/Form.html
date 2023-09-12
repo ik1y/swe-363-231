@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <h1>Ask any question you like.</h1>
+</head>
+<body>
+    <main>
+        <form action="">
+            <section>
+                <h2> Please enter your email </h2>
+                <label for="email"> Email : </label>
+                <input type="email" id="email" required>
+            </section>
+            <br>
+            <section>
+                <h2>Please Enter your mobile number</h2>
+                <label for="mobile"> Mobile number : </label>
+                <input type="tel" id="mobile" value="05" pattern="[0][5][0-9]{8}" required>
+            </section>
+            <br>
+    
+            <section>
+            <section>
+                <h2>Ask about a game mentioned in the website</h2>
+                <label for="question"> Question : </label>
+                <input type="text" name="question" id="question" required>
+            </section>
+            <br>
+            <section>
+                <h2>Please select your gender:</h2>
+                <input type="radio" id="gender" name="gender" value="Male" required>
+                <label for="male">Male</label><br>
+                <input type="radio" id="gender" name="gender" value="Female">
+                <label for="female">Female</label><br>
+            </section>
+            <br>    
+            <section>
+                <h2>How old are you</h2>
+                <label for="age">Age : </label>
+                <input list="ages" id="age" required>
+                <datalist id="ages">
+                    <option value="below 20"></option>
+                    <option value="20-40"></option>
+                    <option value="40-60"></option>
+                    <option value="above 60"></option>
+    
+                </datalist>
+            </section>
+            
+            <br>
+                <input type="submit" value="Submit" formaction="ThankYou.html">
+            </section>
+            
+        </form>
+    </main>
+</body>
+</html>
