@@ -1,0 +1,12 @@
+body{
+    background-color: black;
+    color: lightskyblue;
+}
+
+a{
+    color: blueviolet;
+}
+a:hover{
+    color: aliceblue;
+    font-size: x-large;
+}
