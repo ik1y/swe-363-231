@@ -1,0 +1,59 @@
+table thead{
+    text-transform: uppercase;
+}
+a{
+    color: green;
+    text-decoration: none;
+}
+.top{
+    background-color: #EB5406;
+}
+
+em{
+    background-color: blue;
+}
+#the_most_important {
+    background-color: gold;
+    text-transform: uppercase;
+}
+h{
+    text-transform: capitalize;
+}
+h2{
+    font-family: sans-serif;
+}
+h2 ~ p{
+    font-size: x-large;
+
+}
+table tr:hover,.top:hover{
+    background-color: lightgreen;  
+}
+nav li {
+    display: inline;
+}
+
+ul li:first-child {
+    text-decoration: underline;
+}
+section:hover{
+    cursor: pointer;
+}
+::selection{
+    background: #EB5406;
+}
+input{
+    height: 20px;
+}
+input[type=text]{
+    border-color: lightgray;
+}
+input[name=message]{
+    height: 50px;
+}
+tbody > :nth-child(odd){
+    background-color: gray;
+}
+tbody > :nth-child(even){
+    background-color: bisque;
+}
