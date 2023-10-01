@@ -1,0 +1,98 @@
+@import url('https://fonts.cdnfonts.com/css/new-york-extra-large');
+
+h1 {
+    width: 23.4375rem;
+    height: 4.0625rem;
+    flex-shrink: 0;
+    fill: #000;
+    margin: 1.5rem 8.62rem 1.31rem 1.25rem;
+    font-size: medium;
+}
+
+nav {
+    float: right;
+    margin-top: -1.5rem;
+}
+
+
+body header {
+    width: 23.4375rem;
+    height: 4.0625rem;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.16);
+}
+
+.firstSection {
+    width: 20.9375rem;
+    color: #000;
+    text-align: center;
+    font-family: 'New York Extra Large', sans-serif;
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 3.25rem 1.25rem 2.25rem 1.25rem;
+}
+
+section h2,
+.top1 {
+    width: 20.9375rem;
+    color: #000;
+    font-size: 1.625rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 1.25rem;
+    font-family: 'New York Medium', sans-serif;
+    margin-top: 1.25rem;
+
+}
+
+.product {
+    width: 20.9375rem;
+    color: #000;
+    font-family: 'New York Medium', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 170%;
+    margin-left: 1.25rem;
+}
+
+.compare {
+    width: 20.9375rem;
+    color: #000;
+    font-family: 'New York Medium', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 170%;
+    margin-left: 1.25rem;
+
+}
+
+table {
+    margin-left: 1.25rem;
+    background-color: #000;
+    color: white;
+    width: 23rem;
+}
+
+.form {
+    margin-left: 1.25rem;
+}
+
+form {
+    font-family: 'New York Medium', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    margin-left: 1.25rem;
+}
+
+footer {
+    background: #000;
+    color: white;
+    width: 23.4375rem;
+    height: 4.0625rem;
+    text-align: center;
+    border-radius: 0.5rem;
+}
