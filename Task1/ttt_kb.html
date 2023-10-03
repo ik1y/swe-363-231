@@ -34,7 +34,8 @@
             align-items: center;
         }
 
-        .cell:hover,.selected {
+        .cell:hover,
+        .selected {
             background-color: blanchedalmond;
         }
 
@@ -57,21 +58,28 @@
     <!-- Board -->
     <div class="board">
         <div class="grid">
-            <div class="cell selected"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+            <div class="cell" value="0"></div>
+            <div class="cell" value="1"></div>
+            <div class="cell" value="2"></div>
+            <div class="cell" value="3"></div>
+            <div class="cell" value="4"></div>
+            <div class="cell" value="5"></div>
+            <div class="cell" value="6"></div>
+            <div class="cell" value="7"></div>
+            <div class="cell" value="8"></div>
         </div>
+        <button id="Reset">Reset game</button>
         <script>
 
             // decided which turn is it
             let turn = "X"
             let gameEnded = false
+            let counter = 0
+            let cellsArray = [
+                "0", "1", "2",
+                "3", "4", "5",
+                "6", "7", "8"
+            ]
 
             // when we click on a cell add the letter 
             let board = document.getElementsByClassName("board")[0]
@@ -82,22 +90,64 @@
                 let cell = event.target
                 addLetter(cell)
             }
-
             //add letter
             function addLetter(cell) {
-                cell.innerText = turn
-                if (gameEnded) {
-                    // HW 
-                } else {
-                    // change turn
-                    turn = turn === "X" ? "O" : "X"
+                if (gameEnded != true) {
+                    if (cell.innerText == "") {
+                        cell.innerText = turn
+                        let value = cell.getAttribute("value")
+                        cellsArray[value] = turn
+                        counter++
+                        checkGameState()
+                        if (gameEnded || counter == 9) {
+                            if (gameEnded == true) {
+                                document.getElementById("turn").textContent = `the winner is ${turn} `
+                            }
+                            else {
+                                document.getElementById("turn").textContent = `it is a draw`
+                            }
+                        } else {
+                            // change turn
+                            turn = turn === "X" ? "O" : "X"
 
-                    //change title
-                    turnLetter = document.querySelector("#turn span")
-                    turnLetter.innerText = turn
+                            //change title
+                            document.getElementById("turn").innerHTML = `Now it's is ${turn} turn`;
+                        }
+                    }
                 }
             }
-            
+            function checkGameState() {
+                if ((cellsArray[0] == cellsArray[1] && cellsArray[1] == cellsArray[2]) ||
+                    (cellsArray[3] == cellsArray[4] && cellsArray[4] == cellsArray[5]) ||
+                    (cellsArray[6] == cellsArray[7] && cellsArray[7] == cellsArray[8]) ||
+                    (cellsArray[0] == cellsArray[3] && cellsArray[3] == cellsArray[6]) ||
+                    (cellsArray[1] == cellsArray[4] && cellsArray[4] == cellsArray[7]) ||
+                    (cellsArray[2] == cellsArray[5] && cellsArray[5] == cellsArray[8]) ||
+                    (cellsArray[0] == cellsArray[4] && cellsArray[4] == cellsArray[8]) ||
+                    (cellsArray[2] == cellsArray[4] && cellsArray[4] == cellsArray[6])) {
+                    gameEnded = true
+                }
+            }
+            document.getElementById("Reset").addEventListener("click", function () {
+                reset();
+            });
+
+            function reset() {
+                cellsArray = [
+                    "0", "1", "2",
+                    "3", "4", "5",
+                    "6", "7", "8"
+                ]
+                turn = "X"
+                counter = 0
+                gameEnded = false
+                
+                for (const Boardcell of document.getElementsByClassName("cell")) {
+                    Boardcell.innerText = ""
+                }
+                document.getElementById("turn").innerHTML = `Now it's is X turn`;
+            }
+
 
         </script>
     </div>
