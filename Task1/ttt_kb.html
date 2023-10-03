@@ -95,6 +95,10 @@
                 if (gameEnded != true) {
                     if (cell.innerText == "") {
                         cell.innerText = turn
+                        cell.style.background="blue"
+                        if(turn=="X"){
+                        cell.style.background="red"
+                        }
                         let value = cell.getAttribute("value")
                         cellsArray[value] = turn
                         counter++
@@ -144,6 +148,7 @@
                 
                 for (const Boardcell of document.getElementsByClassName("cell")) {
                     Boardcell.innerText = ""
+                    Boardcell.style.background="blanchedalmond"
                 }
                 document.getElementById("turn").innerHTML = `Now it's is X turn`;
             }
