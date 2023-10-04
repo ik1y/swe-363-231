@@ -1,0 +1,54 @@
+.button {
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: red;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    color: white;
+  }
+  
+  .navbar-icon {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-list {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar-list li {
+    margin: 0 10px;
+    display: inline-block;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+  
+  .navbar:hover .bar {
+    transform: rotate(90deg);
+  }
+  
+  .navbar:hover .navbar-list {
+    display: block;
+  }
+  
+  .navbar:hover .navbar-list li {
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
