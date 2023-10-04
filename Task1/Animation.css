@@ -52,3 +52,36 @@
     opacity: 1;
     transition-delay: 0.2s;
   }
+  .loading-bar {
+    width: 200px;
+    height: 5px;
+    background-color: black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+  
+  .content {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+  }
+  
+  .content.hidden {
+    opacity: 1;
+    visibility: visible;
+    animation: revealContent 5s ease forwards;
+  }
+  
+  @keyframes revealContent {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
