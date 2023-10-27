@@ -80,13 +80,29 @@
             cells[0].focus();
             cells[0].style.background = "blanchedalmond";
             let cellsArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
-            for (const cell of cells) {
-                cell.addEventListener("click", cellClicked)
+            [...cells].forEach(cell => {
+                cell.addEventListener("click", event => {
+                    let cell = event.target;
+                    addLetter(cell);
+                })
                 cell.addEventListener("mouseover", hoverColor);
                 cell.addEventListener("mouseout", out)
-            }
-            document.addEventListener("keydown", keyClicked);
-            function keyClicked(event) {
+
+            })
+            document.addEventListener("keydown", event => {
+                const adjustcontent = () => {
+                    for (const cell of cells) {
+                        let letter = cell.innerText;
+                        if (letter == "X")
+                            cell.style.background = 'red';
+                        else if (letter == "O")
+                            cell.style.background = 'blue';
+                        else if (letter == "")
+                            cell.style.background = 'beige';
+                        else;
+                    }
+                }
+
                 if (event.key == 'ArrowUp') {
                     if (currentIndex != 0 && currentIndex != 1 && currentIndex != 2) {
                         currentIndex -= 3;
@@ -113,21 +129,7 @@
                     addLetter(cells[currentIndex]);
                 adjustcontent();
                 cells[currentIndex].style.background = 'blanchedalmond';
-
-
-            }
-            function adjustcontent() {
-                for (const cell of cells) {
-                    let letter = cell.innerText;
-                    if (letter == "X")
-                        cell.style.background = 'red';
-                    else if (letter == "O")
-                        cell.style.background = 'blue';
-                    else if (letter == "")
-                        cell.style.background = 'beige';
-                    else;
-                }
-            }
+            });
 
             function hoverColor(event) {
                 for (var cell in cells) {
@@ -138,17 +140,27 @@
                     event.target.style.background = "blanchedalmond";
                 }
             }
+
             function out(event) {
                 if (event.target.innerText == "X")
                     event.target.style.background = "red";
                 else if (event.target.innerText == "O")
                     event.target.style.background = "blue";
-                else if (event.target.innerText=="")
+                else if (event.target.innerText == "")
                     event.target.style.background = "beige";
             }
-            function cellClicked(event) {
-                let cell = event.target;
-                addLetter(cell);
+
+            const checkGameState =() => {
+                if ((cellsArray[0] == cellsArray[1] && cellsArray[1] == cellsArray[2]) ||
+                    (cellsArray[3] == cellsArray[4] && cellsArray[4] == cellsArray[5]) ||
+                    (cellsArray[6] == cellsArray[7] && cellsArray[7] == cellsArray[8]) ||
+                    (cellsArray[0] == cellsArray[3] && cellsArray[3] == cellsArray[6]) ||
+                    (cellsArray[1] == cellsArray[4] && cellsArray[4] == cellsArray[7]) ||
+                    (cellsArray[2] == cellsArray[5] && cellsArray[5] == cellsArray[8]) ||
+                    (cellsArray[0] == cellsArray[4] && cellsArray[4] == cellsArray[8]) ||
+                    (cellsArray[2] == cellsArray[4] && cellsArray[4] == cellsArray[6])) {
+                    gameEnded = true
+                }
             }
             function addLetter(cell) {
                 if (gameEnded != true) {
@@ -179,43 +191,31 @@
                     }
                 }
             }
-            function checkGameState() {
-                if ((cellsArray[0] == cellsArray[1] && cellsArray[1] == cellsArray[2]) ||
-                    (cellsArray[3] == cellsArray[4] && cellsArray[4] == cellsArray[5]) ||
-                    (cellsArray[6] == cellsArray[7] && cellsArray[7] == cellsArray[8]) ||
-                    (cellsArray[0] == cellsArray[3] && cellsArray[3] == cellsArray[6]) ||
-                    (cellsArray[1] == cellsArray[4] && cellsArray[4] == cellsArray[7]) ||
-                    (cellsArray[2] == cellsArray[5] && cellsArray[5] == cellsArray[8]) ||
-                    (cellsArray[0] == cellsArray[4] && cellsArray[4] == cellsArray[8]) ||
-                    (cellsArray[2] == cellsArray[4] && cellsArray[4] == cellsArray[6])) {
-                    gameEnded = true
+            document.getElementById("Reset").addEventListener("click", (() => {
+                const clear = () => {
+                    for (const Boardcell of cells) {
+                        Boardcell.innerText = ""
+                        Boardcell.style.background = "beige"
+                    }
                 }
-            }
-            document.getElementById("Reset").addEventListener("click", function () {
-                reset();
-            });
+                return() => {
+                    clear();
+                    cellsArray = [
+                        "0", "1", "2",
+                        "3", "4", "5",
+                        "6", "7", "8"
+                    ]
+                    turn = "X"
+                    counter = 0
+                    gameEnded = false
+                    document.getElementById("Reset").blur()
+                    currentIndex = 0;
+                    cells[0].focus();
 
-            function reset() {
-                cellsArray = [
-                    "0", "1", "2",
-                    "3", "4", "5",
-                    "6", "7", "8"
-                ]
-                turn = "X"
-                counter = 0
-                gameEnded = false
-                document.getElementById("Reset").blur()
-                currentIndex = 0;
-                cells[0].focus();
-                for (const Boardcell of cells) {
-                    Boardcell.innerText = ""
-                    Boardcell.style.background = "beige"
+                    cells[0].style.background = "blanchedalmond";
+                    document.getElementById("turn").innerHTML = `Now it's is X turn`;
                 }
-                cells[0].style.background = "blanchedalmond";
-                document.getElementById("turn").innerHTML = `Now it's is X turn`;
-            }
-
-
+            })());
         </script>
     </div>
 </body>
