@@ -1,22 +1,13 @@
 const express = require("express");
-const path = require("path");
 const app = express();
 const process=require("process")
-app.use(express.static("./")); // Serve static files from the root directory
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "Website.html"));
-});
-
-app.get("/ContactUs", (req, res) => {
-  res.sendFile(path.join(__dirname, "ContactUs.html"));
-});
-app.get("/Form", (req, res) => {
-    res.sendFile(path.join(__dirname, "Form.html"));
-  });
-
-
-// ... other routes for additional pages
+const WebsiteRouter = require("./Router1");
+const ContactUsRouter = require("./Router2");
+const FormRouter = require("./Router3");
+app.use(express.static("./"));
+app.use("/", WebsiteRouter);
+app.use("/", ContactUsRouter);
+app.use("/", FormRouter);
 const port = 3000;
 
 app.listen(port, () => {
